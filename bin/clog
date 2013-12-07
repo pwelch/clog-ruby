@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/clog'
 require 'yaml'
 require 'optparse'
+require_relative '../lib/clog'
 
 options = {}
 
