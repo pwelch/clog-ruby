@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/clog'
+require 'yaml'
+require 'optparse'
+
+options = {}
+
+# Required Command Line Options
+required = [:config, :message]
+
+# Parse Command Line Options
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: clog [options]"
+  opts.on("-m", "--message MESSAGE", "Log message to create") do |m|
+    options[:message] = m
+  end
+  opts.on("-c", "--config FILE", "Configuration file for Clog") do |c|
+    options[:config] = c
+  end
+end
+parser.parse!
+
+# Abort if the required options are missing
+abort parser.to_s if !required.all? { |k| options.has_key?(k) }
+
+# Parse configuration file
+config = YAML.load_file(options[:config])
+
+# Create Log Entry Data
+entry  = LogEntry.new(options[:message])
+
+# Create HTTP Request
+transmit = Transmit.new(
+  config["server"], 
+  config["api_key"], 
+  entry.data
+)
+
+# Send new entry to server
+transmit.post_entry
+
+if transmit.post_success?
+  print "OK"
+  exit 0
+else
+  print "Failed"
+  exit 1
+end
