@@ -1,0 +1,7 @@
+{
+  "event": {
+    "entry": "Test log entry message.",
+    "hostname":"rspec.local",
+    "user":"rspec-user"
+  }
+}
