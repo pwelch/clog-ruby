@@ -1,20 +1,6 @@
 # Clog
 
-Clog is a Ruby gem CLI for the [Captain's Log]() Rails application.
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'clog'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install clog
+Clog is a Ruby gem CLI for the [Captain's Log](https://github.com/pwelch/captains_log) Rails application.
 
 ## Configuration
 
