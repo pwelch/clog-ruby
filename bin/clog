@@ -4,10 +4,13 @@ require 'yaml'
 require 'optparse'
 require_relative '../lib/clog'
 
-options = {}
+# Default options
+options = {
+ config: '/etc/clog/clog_config.yml'
+}
 
 # Required Command Line Options
-required = [:config, :message]
+required = [:message]
 
 # Parse Command Line Options
 parser = OptionParser.new do |opts|
@@ -25,7 +28,12 @@ parser.parse!
 abort parser.to_s if !required.all? { |k| options.has_key?(k) }
 
 # Parse configuration file
-config = YAML.load_file(options[:config])
+if !File.exists?(options[:config])
+  print "Error: #{options[:config]} does not exist"
+  exit 3
+else
+  config = YAML.load_file(options[:config])
+end
 
 # Create Log Entry Data
 entry  = LogEntry.new(options[:message])
