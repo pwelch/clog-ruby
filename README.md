@@ -4,6 +4,10 @@ Clog is a Ruby gem CLI for the [Captain's Log](https://github.com/pwelch/captain
 
 ## Configuration
 
+Clog looks for a configuration file `/etc/clog/clog_config.yml` by default.
+
+To specify a different file use `-c /path/to/config`.
+
 Example clog configuration file
 
 ```bash
@@ -17,7 +21,7 @@ api_key: 'API_KEY'
 ## Usage
 
 ```bash
- clog -m "Restarted apache in staging" -c /path/to/config
+ clog -m "Restarted apache in staging"
 ```
 
 ## Contributing
