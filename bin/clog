@@ -30,7 +30,7 @@ abort parser.to_s if !required.all? { |k| options.has_key?(k) }
 # Parse configuration file
 if !File.exists?(options[:config])
   print "Error: #{options[:config]} does not exist"
-  exit 3
+  exit 1
 else
   config = YAML.load_file(options[:config])
 end
