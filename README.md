@@ -2,6 +2,7 @@
 
 Clog is a Ruby gem CLI for the [Captain's Log](https://github.com/pwelch/captains_log) Rails application.
 
+[![Build Status](https://secure.travis-ci.org/pwelch/clog-ruby.png)](http://travis-ci.org/pwelch/clog-ruby)
 ## Configuration
 
 Clog looks for a configuration file `/etc/clog/clog_config.yml` by default.
