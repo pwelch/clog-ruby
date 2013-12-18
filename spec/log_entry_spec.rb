@@ -18,7 +18,7 @@ describe LogEntry do
       expect(@log_entry.data).to be_kind_of String
     end
 
-    it "should be a JSON string" do
+    it "should return a JSON string" do
       expect(@log_entry.data).to eq(load_json('send_data.json').to_json)
     end
   end
