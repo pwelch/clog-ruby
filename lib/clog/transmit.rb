@@ -4,15 +4,15 @@ require 'uri'
 class Transmit
   attr_accessor :uri, :port, :api_token, :data
 
-  def initialize(url, api_token, data, options={})
+  def initialize(url, api_token, data)
     @api_token = api_token
     @data      = data
     @uri       = URI(url)
-    @port      = options[:port] ? options[:port] : 80
+    @port      = uri.port
   end
 
   def http
-    @_http ||= Net::HTTP.new(uri.host, port)
+    @_http ||= Net::HTTP.new(uri.host, uri.port)
   end
 
   def post_entry
