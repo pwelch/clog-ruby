@@ -1,12 +1,11 @@
 #!/usr/bin/env ruby
 
-require 'yaml'
 require 'optparse'
 require_relative '../lib/clog'
 
 # Default options
 options = {
- config: '/etc/clog/clog_config.yml'
+  config: '/etc/clog/clog_config.yml'
 }
 
 # Required Command Line Options
@@ -32,7 +31,7 @@ if !File.exists?(options[:config])
   print "Error: #{options[:config]} does not exist"
   exit 1
 else
-  config = YAML.load_file(options[:config])
+  config = Configuration.load(options[:config])
 end
 
 # Create Log Entry Data
