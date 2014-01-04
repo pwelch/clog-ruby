@@ -2,13 +2,12 @@ require 'net/http'
 require 'uri'
 
 class Transmit
-  attr_accessor :uri, :port, :api_token, :data
+  attr_accessor :api_token, :data, :uri
 
   def initialize(url, api_token, data)
     @api_token = api_token
     @data      = data
     @uri       = URI(url)
-    @port      = uri.port
   end
 
   def http
